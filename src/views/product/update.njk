@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Update Produto</title>
+    </head>
+    <body>
+        <h1>Update Produto</h1>
+        <form action="/products/edit/{{product._id}}?_method=PUT" method="post">
+            <input type="text" name="productCode" placeholder="Codigo do produto" value="{{product.productCode}}" />
+            <input type="text" name="name" placeholder="Nome do produto" value="{{product.name}}"/>
+            <input type="text" name="price" placeholder="Preço" value="{{product.price}}"/>
+             <input type="text" name="salePrice" placeholder="Preço de venda" value="{{product.salePrice}}"/>
+            <input type="text" name="amount" placeholder="Quantidade" value="{{product.amount}}"/>
+            <input type="date" name="expirationDate" placeholder="Data de validade" value="{{product.formattedExpirationDate}}"/>
+
+            <button type="submit">Salvar</button>
+        </form>
+    </body>
+</html>

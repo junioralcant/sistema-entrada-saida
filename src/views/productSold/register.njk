@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro de Produto</title>
+    </head>
+    <body>
+        <h1>Cadastro de Produto</h1>
+        <form action="/products" method="post">
+            <input type="text" name="productCode" placeholder="Codigo do produto"/>
+            <input type="text" name="name" placeholder="Nome do produto"/>
+            <input type="text" name="price" placeholder="Preço"/>
+            <input type="text" name="salePrice" placeholder="Preço de venda"/>
+            <input type="text" name="amount" placeholder="Quantidade"/>
+            <input type="date" name="expirationDate" placeholder="Data de validade"/>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Catergorias</title>
+    </head>
+    <body>
+        <form action="/productslist" method="post">
+            <input type="text" placeholder="Nome do produto" name="nome" />
+            <button type="submit">Pesquisar</button>
+        </form>
+        
+        <table>
+            <tr>
+                <th>Codigo</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Preço de Venda</th>
+                <th>Quantidade</th>
+                <th>Data de Vencimento</th>
+                <th>Ação</th>
+            </tr>
+            {% for product in products %}
+                <tr>
+                <td>{{ product.productCode }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.salePrice }}</td>
+                    <td>{{ product.amount }}</td>
+                    <td>{{ product.formattedExpirationDate }}</td>
+                    <td>
+                        <a href="/products/edit/{{product._id}}">Editar</a>
+                        <form action="/products/delete/{{product._id}}?_method=DELETE" method="post">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

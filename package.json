@@ -1,0 +1,29 @@
+{
+  "name": "systemcad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-mongodb-session": "^2.4.1",
+    "cors": "^2.8.5",
+    "date-fns": "^2.16.1",
+    "date-fns-timezone": "^0.1.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.1",
+    "mongoose": "^5.11.13",
+    "mongoose-paginate": "^5.0.3",
+    "nodemon": "^2.0.7",
+    "nunjucks": "^3.2.2",
+    "path": "^0.12.7"
+  }
+}

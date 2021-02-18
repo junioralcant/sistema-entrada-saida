@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Catergorias</title>
+
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Nome</th>
+            </tr>
+            {% for category in categorys %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>
+                        <a href="/categorys/edit/{{category._id}}">Editar</a>
+                        <form action="/categorys/delete/{{category._id}}?_method=DELETE" method="post">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
