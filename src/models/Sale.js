@@ -16,6 +16,9 @@ const SaleSchema = new mongoose.Schema({
     ],
     total: Number,
   },
+  formattedDate: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

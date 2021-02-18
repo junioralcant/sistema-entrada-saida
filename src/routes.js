@@ -39,6 +39,8 @@ routes.post("/cart/add-one/:id", CartController.addOne);
 routes.post("/cart/remove-one/:id", CartController.removeOne);
 routes.post("/cart/delete/:id", CartController.delete);
 
-routes.post("/sale", SaleController.store);
+routes.post("/sales", SaleController.store);
+routes.get("/sales", SaleController.index);
+routes.delete("/sales/delete/:id", SaleController.destroy);
 
 module.exports = routes;
