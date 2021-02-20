@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Update Produto</title>
+    </head>
+    <body>
+        <h1>Update de Despesas</h1>
+        <form action="/exits/edit/{{exit._id}}?_method=PUT" method="post">
+            <input type="text" name="descriptionExit" placeholder="Descrição da dispesa" value="{{exit.descriptionExit}}" />
+            <input type="text" name="value" placeholder="Valor" value="{{exit.value}}" />
+            <input type="date" name="date" placeholder="Data" value="{{exit.formattedDate}}"/>
+            <button type="submit">Salvar</button>
+        </form>
+    </body>
+</html>

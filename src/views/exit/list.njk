@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Catergorias</title>
+    </head>
+    <body>
+        <h1>Cadastro de Despesas</h1>
+        <form action="/exits" method="post">
+            <input type="text" name="descriptionExit" placeholder="Descrição da dispesa" />
+            <input type="text" name="value" placeholder="Valor" />
+            <input type="date" name="date" placeholder="Data" />
+            <button type="submit">Salvar</button>
+        </form>
+
+        <h1>Listagem de Despesas</h1>
+
+        <form action="/productslist" method="post">
+            <input type="text" placeholder="Nome do produto" name="nome" />
+            <button type="submit">Pesquisar</button>
+        </form>
+        
+        <table>
+            <tr>
+                <th>Descrição da Dispesa</th>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Ação</th>
+            </tr>
+            {% for exit in exits %}
+                <tr>
+                    <td>{{ exit.descriptionExit }}</td>
+                    <td>{{ exit.value }}</td>
+                    <td>{{ exit.formattedDate }}</td>
+                    <td>
+                        <a href="/exits/edit/{{exit._id}}">Editar</a>
+                        <form action="/exits/delete/{{exit._id}}?_method=DELETE" method="post">
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
+
