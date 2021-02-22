@@ -1,7 +1,8 @@
+const moment = require("moment");
 const Sale = require("../models/Sale");
 const Cart = require("../lib/cart");
 const Product = require("../models/Product");
-const moment = require("moment");
+const Entrance = require("../models/Entrance");
 
 class SaleController {
   async index(req, res) {
@@ -49,6 +50,11 @@ class SaleController {
       await product.save();
     });
 
+    await Entrance.create({
+      sale: sale._id,
+      value: cart.total.price,
+    });
+
     cart.items.map(async (item) => {
       cart = Cart.init(cart).delete(item.product._id);
       req.session.cart = cart;
@@ -71,6 +77,10 @@ class SaleController {
     });
 
     await Sale.findByIdAndDelete(id);
+
+    const entrance = await Entrance.find({ sale: sale._id });
+
+    await Entrance.findByIdAndRemove(entrance[0]._id);
 
     return res.redirect("/sales");
   }

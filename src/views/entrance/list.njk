@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Entradas</title>
+    </head>
+    <body>
+        <h1>Listagem de Entradas</h1>
+
+        <form action="/productslist" method="post">
+            <input type="text" placeholder="Nome do produto" name="nome" />
+            <button type="submit">Pesquisar</button>
+        </form>
+        
+        <table>
+            <tr>
+                <th>Tipo de Entrada</th>
+                <th>Valor</th>
+                <th>Data</th>
+            </tr>
+            {% for entrance in entrances %}
+                <tr>
+                    <td><a href="#">Venda</a></td>
+                    <td>{{ entrance.value }}</td>
+                    <td>{{ entrance.formattedDate }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
+

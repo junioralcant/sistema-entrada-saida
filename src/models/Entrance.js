@@ -2,20 +2,15 @@ const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate");
 
 const EntranceSchema = new mongoose.Schema({
-  Entrance: {
+  sale: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Product",
+    ref: "Sale",
   },
-
-  descripitionEntrance: String,
 
   value: {
     type: Number,
     required: true,
   },
-
-  date: Date,
-
   createdAt: {
     type: Date,
     default: Date.now,

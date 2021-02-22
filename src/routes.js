@@ -7,6 +7,7 @@ const ProductSoldController = require("./controllers/ProductSoldController");
 const CartController = require("./controllers/CartController");
 const SaleController = require("./controllers/SaleController");
 const ExitController = require("./controllers/ExitController");
+const EntranceController = require("./controllers/EntranceController");
 
 const routes = express.Router();
 
@@ -49,5 +50,7 @@ routes.post("/exits", ExitController.store);
 routes.get("/exits/edit/:id", ExitController.edit);
 routes.put("/exits/edit/:id", ExitController.update);
 routes.delete("/exits/delete/:id", ExitController.destroy);
+
+routes.get("/entrances", EntranceController.index);
 
 module.exports = routes;
