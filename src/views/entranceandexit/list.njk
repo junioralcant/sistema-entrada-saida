@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Entradas</title>
+    </head>
+    <body>
+        <h1>Listagem de Entradas e Saídas</h1>
+
+        <form action="/productslist" method="post">
+            <input type="text" placeholder="Nome do produto" name="nome" />
+            <button type="submit">Pesquisar</button>
+        </form>
+        
+        <table>
+            <tr>
+                <th>Entradas</th>
+                <th>Saídas</th>
+                <th>Saldo Total</th>
+            </tr>
+                <tr>
+                    <td>{{ items.totalEntrance }}</td>
+                    <td>{{ items.totalExit }}</td>
+                    <td>{{ items.balance}}</td>
+                </tr>
+        </table>
+    </body>
+</html>
+
