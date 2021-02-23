@@ -45,6 +45,7 @@ routes.post("/cart/delete/:id", CartController.delete);
 routes.post("/sales", SaleController.store);
 routes.get("/sales", SaleController.index);
 routes.delete("/sales/delete/:id", SaleController.destroy);
+routes.delete("/sales/deleteall", SaleController.destroyAll);
 
 routes.get("/exits", ExitController.index);
 routes.post("/exits", ExitController.store);

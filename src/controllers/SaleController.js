@@ -84,6 +84,23 @@ class SaleController {
 
     return res.redirect("/sales");
   }
+
+  async destroyAll(req, res) {
+    let { cart } = req.session;
+
+    if (cart.items <= 0) return res.redirect("/cart");
+
+    console.log(cart);
+
+    cart.items.map(async (item) => {
+      cart = Cart.init(cart).delete(item.product._id);
+      req.session.cart = cart;
+    });
+
+    console.log(cart);
+
+    return res.redirect("/cart");
+  }
 }
 
 module.exports = new SaleController();
