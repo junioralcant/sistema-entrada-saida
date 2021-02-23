@@ -1,88 +1,85 @@
+{% extends "layout.njk" %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catergorias</title>
-        <link rel="stylesheet" href="/cart.css"  />
-    </head>
-    <body>
+    {% block head %}
+        <title>Cart</title>
+        <link rel="stylesheet" href="/cart.css"/>
+    {% endblock %}
 
-        <form action="/cart" method="post">
-            <input type="text" placeholder="Nome do produto" name="nome" />
-            <button type="submit">Pesquisar</button>
-        </form>
+    {% block content %}
+        <div class="content">
+            <h4>Frente de Caixa</h4>
+            <form action="/cart" method="post" class="search">
+                <input class="form-control" type="text" placeholder="Nome do produto" name="nome" />
+                <button type="submit" class="btn btn-primary">Pesquisar</button>
+            </form>
 
-        <table>
-            <tr>
-                <th>Codigo</th>
-                <th>Nome</th>
-                <th>Preço</th>
-                <th>Preço de Venda</th>
-                <th>Quantidade</th>
-                <th>Data de Vencimento</th>
-                <th>Ação</th>
-            </tr>
-            {% for product in products %}
+            <table class="table table-striped table-hover">
                 <tr>
-                <td>{{ product.productCode }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.salePrice }}</td>
-                    <td>{{ product.amount }}</td>
-                    <td>{{ product.formattedExpirationDate }}</td>
-                    <td>
-                        <form action="/cart/add-one/{{product._id}}" method="post">
-                            <button type="submit">Add Carrinho</button>
-                        </form>
-                    </td>
+                    <th>Codigo</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Ação</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for product in products %}
+                        <tr>
+                        <td>{{ product.productCode }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.salePrice }}</td>
+                            <td>
+                                <form action="/cart/add-one/{{product._id}}" method="post">
+                                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                                </form>
+                            </td>
+                        </tr>
+                {% endfor %}
+            </table>
 
-        <div class="header">
-            <p>Produto</p>
-            <p>preço</p>
-            <p>Qtd.</p>
-        </div>
+            <div class="items">
+                {% for item in cart.items %}
+                    <div class="item">
+                        <a href="/products/{{item.product._id}}">
+                            <span class="title">{{item.product.name}}</span>
+                        </a>
 
-        <div class="items">
-            {% for item in cart.items %}
-                <div class="item">
-                    <a href="/products/{{item.product._id}}">
-                        <span class="title">{{item.product.name}}</span>
-                    </a>
-                    <span class="price">{{item.price}}</span>
-                    <div class="quantity-control">
-                        <form action="/cart/remove-one/{{item.product._id}}" method="post">
-                            <button class="remove"> - </button>
-                        </form>
+                        <span class="quantity">QTD: {{item.quantity}}</span>
 
-                        <span class="quantity">{{item.quantity}}</span>
+                        <span class="price">Valor: {{item.price}}</span>
 
-                        <form action="/cart/add-one/{{item.product._id}}" method="post">
-                            <button type="submit"> + </button>
+                        <div class="quantity-control">
+                            <form action="/cart/remove-one/{{item.product._id}}" method="post">
+                                <button class="remove"> <i class="bi bi-clipboard-minus"></i> </button>
+                            </form>
+
+                            <form action="/cart/add-one/{{item.product._id}}" method="post">
+                                <button type="submit"> <i class="bi bi-clipboard-plus"></i> </button>
+                            </form>
+                        </div>
+
+                        <form class="trash" action="/cart/delete/{{item.product._id}}" method="POST">
+                            <button class="delete"> <i class="bi bi-x-octagon-fill"></i> </button>
                         </form>
                     </div>
+                    
+                {% endfor %}
+                <div class="total">
+                    <p>Total:</p> 
+                    <span>{{cart.total.price}}</span>
+                </div>
 
-                    <form class="trash" action="/cart/delete/{{item.product._id}}" method="POST">
-                        <button class="delete"> Delete </button>
+                <div class="finish">
+                    <form class="trash" action="/sales" method="POST">
+                        <button class="btn btn-success"> Finalizar Venda </button>
+                    </form>
+
+                    <form class="trash" method="POST">
+                        <button class="btn btn-danger"> Cancelar Venda </button>
                     </form>
                 </div>
-                
-            {% endfor %}
-            <div class="total">
-                <p>Total</p>
-                <span>{{cart.total.price}}</span>
             </div>
-
-            <form class="trash" action="/sales" method="POST">
-                <button class="delete"> Finalizar Venda </button>
-            </form>
         </div>
+    {% endblock %}
+
+       
 
 
-    </body>
-</html>
 

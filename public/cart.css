@@ -1,2 +1,77 @@
-body {
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.content {
+    margin-top: 60px;
+}
+
+ form input.form-control  {
+    width: 250px;
+    margin-right: 20px;
+}
+
+form.search {
+    display: flex;
+    margin-bottom: 20px;
+
+}
+
+.table {
+    max-width: 650px;
+}
+
+.items{
+    background: #EAEEF1;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 1000px;
+}
+
+.item {
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    margin-bottom: 10px;
+    padding: 10px
+
+}
+
+.quantity-control {
+    display: flex;
+}
+
+.quantity-control form {
+    margin-left: 20px;
+}
+
+.item form  button{
+    background: none;
+    font-size: 20px;
+}
+
+button.delete {
+    color: #FA746C;
+    
+}
+
+.total {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+.total p {
+    margin-right: 10px;
+}
+
+.finish {
+    display: flex;
+}
+
+.finish button {
+    margin-right: 20px;
 }
