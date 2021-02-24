@@ -1,27 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catergorias</title>
-    </head>
-    <body>
-        <h1>Cadastro de Despesas</h1>
-        <form action="/exits" method="post">
-            <input type="text" name="descriptionExit" placeholder="Descrição da dispesa" />
-            <input type="text" name="value" placeholder="Valor" />
-            <input type="date" name="date" placeholder="Data" />
-            <button type="submit">Salvar</button>
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Catergorias</title>
+    <link rel="stylesheet" href="/exit.css"/>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h4>Cadastro de Despesas</h4>
+        <form class="cad" action="/exits" method="post">
+            <div class="row">
+                <input class="form-control" type="text" name="descriptionExit" placeholder="Descrição da dispesa" />
+                <input class="form-control" type="text" name="value" placeholder="Valor" />
+                <input class="form-control" type="date" name="date" placeholder="Data" />
+                <button class="btn btn-primary bnt-exit"  type="submit">Salvar</button>
+            </div>
         </form>
 
-        <h1>Listagem de Despesas</h1>
+        <h4>Listagem de Despesas</h4>
 
-        <form action="/productslist" method="post">
-            <input type="text" placeholder="Nome do produto" name="nome" />
-            <button type="submit">Pesquisar</button>
+        <form class="search" action="/productslist" method="post">
+            <div class="row">            
+                <div class="col-md-4">
+                    <label for="startDate" class="form-label">Data Inicial</label>
+                    <input id="startDate" class="form-control" type="date" name="startDate" />
+                </div>
+                <div class="col-md-4">
+                    <label for="finalDate" class="form-label">Data final</label>
+                    <input id="finalDate" class="form-control" type="date" name="finalDate" />
+                    </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
+                </div>
+            </div>
         </form>
-        
-        <table>
+
+        <table class="table table-striped table-hover">
             <tr>
                 <th>Descrição da Dispesa</th>
                 <th>Valor</th>
@@ -34,14 +48,18 @@
                     <td>{{ exit.value }}</td>
                     <td>{{ exit.formattedDate }}</td>
                     <td>
-                        <a href="/exits/edit/{{exit._id}}">Editar</a>
-                        <form action="/exits/delete/{{exit._id}}?_method=DELETE" method="post">
-                            <button type="submit">Excluir</button>
-                        </form>
+                        <div class="action">
+                            <a href="/exits/edit/{{exit._id}}">Editar</a>
+                            <form action="/exits/delete/{{exit._id}}?_method=DELETE" method="post">
+                                <button type="submit">Excluir</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             {% endfor %}
         </table>
-    </body>
-</html>
+    </div>
+{% endblock %}
+        
+
 

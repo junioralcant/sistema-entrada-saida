@@ -15,7 +15,8 @@ form input.form-control  {
 
 form.form-product {
     display: flex;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 button.bnt-product {
@@ -24,7 +25,7 @@ button.bnt-product {
 
 form.search {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 div.action {

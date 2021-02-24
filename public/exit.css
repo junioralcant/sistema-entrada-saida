@@ -1,0 +1,31 @@
+.content {
+    margin-top: 60px;
+}
+
+form input.form-control  {
+    width: 250px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+button.bnt-exit {
+    width: 120px;
+    height: 40px;
+}
+
+form.cad {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+form.search {
+    margin-bottom: 20px;
+}
+
+div.action {
+    display: flex;
+}
+
+form.search .row {
+    align-items: center;
+}
