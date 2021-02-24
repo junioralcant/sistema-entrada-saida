@@ -24,6 +24,25 @@ form.search {
 
 div.action {
     display: flex;
+    font-size: 20px;
+}
+
+.bi-pencil-fill {
+    color: #FFC447;
+}
+
+.bi-pencil-fill:hover {
+    color: #d2a138;
+}
+
+div.action button.delete {
+    margin-left: 10px;
+    background: none;
+    color: #FD6259
+}
+
+div.action button.delete:hover {
+    color: #da4a43
 }
 
 form.search .row {

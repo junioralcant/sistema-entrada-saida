@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-    <title>Catergorias</title>
+    <title>Saídas</title>
     <link rel="stylesheet" href="/exit.css"/>
 {% endblock %}
 
@@ -49,9 +49,9 @@
                     <td>{{ exit.formattedDate }}</td>
                     <td>
                         <div class="action">
-                            <a href="/exits/edit/{{exit._id}}">Editar</a>
+                            <a href="/exits/edit/{{exit._id}}"><i class="bi bi-pencil-fill"></i></a>
                             <form action="/exits/delete/{{exit._id}}?_method=DELETE" method="post">
-                                <button type="submit">Excluir</button>
+                                <button class="delete" type="submit"><i class="bi bi-trash-fill"></i></button>
                             </form>
                         </div>
                     </td>
