@@ -56,7 +56,7 @@ class ProductController {
   async store(req, res) {
     await Product.create(req.body);
 
-    return res.redirect("/products");
+    return res.redirect("/productslist");
   }
 
   async edit(req, res) {

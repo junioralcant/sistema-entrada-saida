@@ -60,7 +60,7 @@ class SaleController {
       req.session.cart = cart;
     });
 
-    return res.send();
+    return res.redirect("/cart");
   }
 
   async destroy(req, res) {
@@ -90,14 +90,10 @@ class SaleController {
 
     if (cart.items <= 0) return res.redirect("/cart");
 
-    console.log(cart);
-
     cart.items.map(async (item) => {
       cart = Cart.init(cart).delete(item.product._id);
       req.session.cart = cart;
     });
-
-    console.log(cart);
 
     return res.redirect("/cart");
   }

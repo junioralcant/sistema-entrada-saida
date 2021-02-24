@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+.content {
+    margin-top: 60px;
+}
+
+form input.form-control  {
+    width: 250px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+form.form-product {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+button.bnt-product {
+    width: 120px
+}
+
+form.search {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+div.action {
+    display: flex;
+}
