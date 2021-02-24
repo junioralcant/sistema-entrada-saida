@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.content {
+    margin-top: 60px;
+}
+
+form.search {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+form input.form-control  {
+    width: 250px;
+    margin-right: 20px;
+}
+
+form.search .row {
+    align-items: center;
+    width: 100%;
+}
+
+div.box-input {
+    width: 100%;
+    margin-left: 10px;
+}
+
+.table {
+    max-width: 650px
+}
+
+strong.balance {
+    padding: 15px;
+    font-size: 20px;
+    background: #3BB5B4;
+    color: #174746;
+    border-radius: 10px;
+  
+}
+
+div.box-balance {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+

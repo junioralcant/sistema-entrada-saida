@@ -1,19 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Entradas</title>
-    </head>
-    <body>
-        <h1>Listagem de Entradas</h1>
+{% extends "layout.njk" %}
 
-        <form action="/productslist" method="post">
-            <input type="text" placeholder="Nome do produto" name="nome" />
-            <button type="submit">Pesquisar</button>
+{% block head %}
+    <title>Entradas</title>
+    <link rel="stylesheet" href="entrance.css"/>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Entradas</h4>
+            </div>
+            <div class="col-md-6 box-balance">
+                <strong class="balance">R$ 600,00</strong>
+            </div>
+        </div>
+
+        <form class="search" action="/productslist" method="post">
+            <div class="row">            
+                <div class="col-md-4">
+                    <label for="startDate" class="form-label">Data Inicial</label>
+                    <input id="startDate" class="form-control" type="date" name="startDate" />
+                </div>
+                <div class="col-md-4">
+                    <label for="finalDate" class="form-label">Data final</label>
+                    <input id="finalDate" class="form-control" type="date" name="finalDate" />
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
+                </div>
+            </div>
         </form>
         
-        <table>
+        <table class="table table-striped table-hover">
             <tr>
                 <th>Tipo de Entrada</th>
                 <th>Valor</th>
@@ -27,6 +46,8 @@
                 </tr>
             {% endfor %}
         </table>
-    </body>
-</html>
+    </div>    
+{% endblock %}
+
+        
 
