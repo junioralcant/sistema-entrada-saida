@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+.content {
+    margin-top: 60px;
+}
+
+button.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 328px;
+    height: 130px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 18px;
+
+}
+
+i {
+    font-size: 60px ;
+    margin-left: 15px;
+}
+
+button.product {
+    background-image: linear-gradient(to bottom right,#23E6D9, #208EEB);
+}
+
+button.product:hover {
+    background-image: linear-gradient(to bottom right,#1fc6bb, #1e7fce);
+}
+
+button.sale {
+    background-image: linear-gradient(to bottom right,#F75995, #FF9FA2);
+}
+
+button.sale:hover {
+    background-image: linear-gradient(to bottom right,#dd4e85, #e99194);
+}
+
+button.entrance-exit {
+    background-image: linear-gradient(to bottom right,#FFC447, #FF9C52);
+}
+
+button.entrance-exit:hover {
+    background-image: linear-gradient(to bottom right,#ecb641, #ec914c);
+}
+
+button.datails-sales {
+    background-image: linear-gradient(to bottom right,#3ADF96, #3BB5B4);
+}
+
+button.datails-sales:hover {
+    background-image: linear-gradient(to bottom right,#35cf8a, #33a5a5);
+}

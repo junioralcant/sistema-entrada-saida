@@ -12,6 +12,10 @@ const EntranceAndExitController = require("./controllers/EntranceAndExitControll
 
 const routes = express.Router();
 
+routes.get("/", (req, res) => {
+  return res.render("home/index");
+});
+
 routes.get("/userslist", UserController.index);
 routes.get("/users", UserController.create);
 routes.post("/users", UserController.store);
