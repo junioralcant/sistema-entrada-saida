@@ -1,21 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Update Produto</title>
-    </head>
-    <body>
-        <h1>Update Produto</h1>
-        <form action="/products/edit/{{product._id}}?_method=PUT" method="post">
-            <input type="text" name="productCode" placeholder="Codigo do produto" value="{{product.productCode}}" />
-            <input type="text" name="name" placeholder="Nome do produto" value="{{product.name}}"/>
-            <input type="text" name="price" placeholder="Preço" value="{{product.price}}"/>
-             <input type="text" name="salePrice" placeholder="Preço de venda" value="{{product.salePrice}}"/>
-            <input type="text" name="amount" placeholder="Quantidade" value="{{product.amount}}"/>
-            <input type="date" name="expirationDate" placeholder="Data de validade" value="{{product.formattedExpirationDate}}"/>
+{% extends "layout.njk" %}
 
-            <button type="submit">Salvar</button>
-        </form>
-    </body>
-</html>
+{% block head %}
+    <title>Editar Produto</title>
+{% endblock %}    
+
+{% block content %}
+    <h4 style="margin-top: 60px">Editar Produto</h4>
+    <form action="/products/edit/{{product._id}}?_method=PUT" method="post">
+        <div class="row">
+            <div class="col-md-3">
+                <label class="form-label">Codigo do produto</label>
+                <input class="form-control" type="text" name="productCode" placeholder="Codigo do produto" value="{{product.productCode}}" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Nome do produto</label>
+                <input class="form-control" type="text" name="name" placeholder="Nome do produto" value="{{product.name}}"/>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Preço</label>
+                <input class="form-control" type="text" name="price" placeholder="Preço" value="{{product.price}}"/>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Preço de venda</label>
+                <input class="form-control" type="text" name="salePrice" placeholder="Preço de venda" value="{{product.salePrice}}"/>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Quantidade</label>
+                <input class="form-control" type="text" name="amount" placeholder="Quantidade" value="{{product.amount}}"/>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Data</label>
+                <input class="form-control" type="date" name="expirationDate" placeholder="Data de validade" value="{{product.formattedExpirationDate}}"/>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 30px"> 
+            <button class="btn btn-primary" style="width: 100px" type="submit">Salvar</button>
+            <a href="/productslist" class="btn btn-danger" style="width: 100px; margin-left: 30px; color: #fff !important;">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}
+        
+        
