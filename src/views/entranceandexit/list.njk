@@ -1,30 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Entradas</title>
-    </head>
-    <body>
-        <h1>Listagem de Entradas e Saídas</h1>
+{% extends "layout.njk" %}
+{% block head %}
+    <title>Entradas e Saídas</title>
+     <link rel="stylesheet" href="/entranceandexit.css"/>
+{% endblock %}
 
-        <form action="/productslist" method="post">
-            <input type="text" placeholder="Nome do produto" name="nome" />
-            <button type="submit">Pesquisar</button>
-        </form>
-        
-        <table>
-            <tr>
-                <th>Entradas</th>
-                <th>Saídas</th>
-                <th>Saldo Total</th>
-            </tr>
-                <tr>
-                    <td>{{ items.totalEntrance }}</td>
-                    <td>{{ items.totalExit }}</td>
-                    <td>{{ items.balance}}</td>
-                </tr>
-        </table>
-    </body>
-</html>
+{% block content %}
+<div class="content">
+    <h4>Listagem de Entrada e Saída</h4>
 
+    <form class="search" action="/productslist" method="post">
+        <div class="row">            
+            <div class="col-md-4">
+                <label for="startDate" class="form-label">Data Inicial</label>
+                <input id="startDate" class="form-control" type="date" name="startDate" />
+            </div>
+            <div class="col-md-4">
+                <label for="finalDate" class="form-label">Data final</label>
+                <input id="finalDate" class="form-control" type="date" name="finalDate" />
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
+            </div>
+        </div>
+    </form>
+
+     <div class="row">            
+            <div class="col-md-4 box-data">
+                <label  class="form-label label-data">Entradas</label>
+                <br/>
+                <strong class="data entrance">{{ items.totalEntrance }}</strong>
+            </div>
+            <div class="col-md-4 box-data">
+                <label  class="form-label label-data">Saídas</label>
+                <br/>
+                <strong class="data exit">{{ items.totalExit }}</strong>
+            </div>
+            <div class="col-md-4 box-data">
+                <label  class="form-label label-data">Saldo</label> 
+                <br/>
+                <strong class="data balance">{{ items.balance }}</strong>
+            </div>
+        </div>
+</div>    
+{% endblock %}
+       

@@ -26,8 +26,6 @@ class EntranceAndExitController {
 
     items.balance = items.totalEntrance - items.totalExit;
 
-    console.log(items);
-
     return res.render("entranceandexit/list", { items: items });
   }
 }
