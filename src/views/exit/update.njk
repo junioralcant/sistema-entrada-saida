@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Update Produto</title>
-    </head>
-    <body>
-        <h1>Update de Despesas</h1>
-        <form action="/exits/edit/{{exit._id}}?_method=PUT" method="post">
-            <input type="text" name="descriptionExit" placeholder="Descrição da dispesa" value="{{exit.descriptionExit}}" />
-            <input type="text" name="value" placeholder="Valor" value="{{exit.value}}" />
-            <input type="date" name="date" placeholder="Data" value="{{exit.formattedDate}}"/>
-            <button type="submit">Salvar</button>
-        </form>
-    </body>
-</html>
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Editar Despesa</title>
+{% endblock %}
+
+{% block content %}
+    <h4 style="margin-top: 60px">Editar Despesa</h4>
+    <form action="/exits/edit/{{exit._id}}?_method=PUT" method="post">
+        <div class="row">
+            <div class="col-md-3">
+                <label class="form-label">Descrição da despesa</label>
+                <input class="form-control" type="text" name="descriptionExit" placeholder="Descrição da dispesa" value="{{exit.descriptionExit}}" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Valor</label>
+                <input class="form-control" type="text" name="value" placeholder="Valor" value="{{exit.value}}" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Data</label>
+                <input class="form-control" type="date" name="date" placeholder="Data" value="{{exit.formattedDate}}"/>
+            </div>
+            <div class="row" style="margin-top: 30px"> 
+                <button class="btn btn-primary" style="width: 100px" type="submit">Salvar</button>
+                <a href="/exits" class="btn btn-danger" style="width: 100px; margin-left: 30px; color: #fff !important;">Cancelar</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+        
