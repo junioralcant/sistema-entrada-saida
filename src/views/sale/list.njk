@@ -1,38 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catergorias</title>
-    </head>
-    <body>
-        <table>
-            <tr>
-                <th>Total</th>
-                <th>Produtos</th>
-                <th>Data</th>
-            </tr>
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Vendas</title>
+    <link rel="stylesheet" href="/sale.css"/>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+
+        <form class="search" action="/productslist" method="post">
+            <div class="row">            
+                <div class="col-md-4">
+                    <label for="startDate" class="form-label">Data Inicial</label>
+                    <input id="startDate" class="form-control" type="date" name="startDate" />
+                </div>
+                <div class="col-md-4">
+                    <label for="finalDate" class="form-label">Data final</label>
+                    <input id="finalDate" class="form-control" type="date" name="finalDate" />
+                    </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
             {% for sale in sales %}
-                <tr>
-                    <td>{{ sale.sale.total }}</td>
-                    <td>
-                        {% for product in sale.sale.products %}
-                            <p>{{product.product.name}}</p>
-                            <p>QTD:</p>
-                            <p>{{product.quantity}}</p>
-                            <p>Valor:</p>
-                            <p>{{product.price}}</p>
-                        {% endfor %}
-                    </td>
-                    <td>{{ sale.formattedDate }}</td>
-                    <td>
-                        <form action="/sales/delete/{{sale._id}}?_method=DELETE" method="post">
-                            <button type="submit">Excluir</button>
+                <div class="box-sale col-md-3">
+                    <strong class="data">{{ sale.formattedDate }}</strong>
+
+                    {% for product in sale.sale.products %}
+                        <div class="data-product">
+                            <strong>{{product.product.name}}</strong>
+                            <strong>QTD: {{product.quantity}}</strong>
+                            <strong>Valor: {{product.price}}</strong>
+                        </div>
+                    {% endfor %}
+
+                    <div class="total">
+                        <strong>Total: {{ sale.sale.total }}</strong>
+                    </div>
+
+                    <div class="row box-button">
+                        <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST">
+                            <button class="btn btn-danger button-delete">Deletar</button>
                         </form>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             {% endfor %}
-        </table>
-    </body>
-</html>
+        </div>
+    </div>
+{% endblock %}        
+
+        
+
 

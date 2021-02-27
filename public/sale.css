@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.content {
+    margin-top: 60px;
+}
+
+form.search {
+    margin-bottom: 20px
+}
+
+strong {
+    font-size: 15px;
+}
+
+
+.box-sale {
+    border-radius: 10px;
+    background: #EAEEF1;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+div.data-product {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    background: #fff;
+    padding: 15px;
+    margin-top: 15px
+}
+
+.total {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
