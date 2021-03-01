@@ -8,46 +8,57 @@
 {% block content %}
     <div class="content">
 
-        <form class="search" action="/productslist" method="post">
+        <form class="search" action="/salesdates" method="post">
             <div class="row">            
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="startDate" class="form-label">Data Inicial</label>
                     <input id="startDate" class="form-control" type="date" name="startDate" />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="finalDate" class="form-label">Data final</label>
                     <input id="finalDate" class="form-control" type="date" name="finalDate" />
                     </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
+                </div>
+                <div class="col-md-3">
+                    <strong>Total: {{ total }}</strong>
+                    {% if dateFilter != false %}
+                        <a href="/sales" class="btn btn-secondary">Limpar</a>
+                    {% endif %}
                 </div>
             </div>
         </form>
 
         <div class="row">
             {% for sale in sales %}
-                <div class="box-sale col-md-3">
-                    <strong class="data">{{ sale.formattedDate }}</strong>
+                {% if sale != null %}
+                    <div class="box-sale col-md-3">
+                        <strong class="data">{{ sale.formattedDate }}</strong>
 
-                    {% for product in sale.sale.products %}
-                        <div class="data-product">
-                            <strong>{{product.product.name}}</strong>
-                            <strong>QTD: {{product.quantity}}</strong>
-                            <strong>Valor: {{product.price}}</strong>
+                        {% for product in sale.sale.products %}
+                                <div class="data-product">
+                                    <strong>{{product.product.name}}</strong>
+                                    <strong>QTD: {{product.quantity}}</strong>
+                                    <strong>Valor: {{product.price}}</strong>
+                                </div>  
+                            
+                        {% endfor %}
+
+                        <div class="total">
+                            <strong>Total: {{ sale.sale.total }}</strong>
                         </div>
-                    {% endfor %}
 
-                    <div class="total">
-                        <strong>Total: {{ sale.sale.total }}</strong>
+                        <div class="row box-button">
+                            <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST">
+                                <button class="btn btn-danger button-delete">Deletar</button>
+                            </form>
+                        </div>
                     </div>
+                {% endif %}
 
-                    <div class="row box-button">
-                        <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST">
-                            <button class="btn btn-danger button-delete">Deletar</button>
-                        </form>
-                    </div>
-                </div>
             {% endfor %}
+
         </div>
     </div>
 {% endblock %}        

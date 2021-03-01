@@ -1,4 +1,5 @@
 const moment = require("moment");
+const { formatToTimeZone } = require("date-fns-timezone");
 const Sale = require("../models/Sale");
 const Cart = require("../lib/cart");
 const Product = require("../models/Product");
@@ -6,11 +7,43 @@ const Entrance = require("../models/Entrance");
 
 class SaleController {
   async index(req, res) {
-    let sales = await Sale.find()
-      .populate("sale.products.product")
-      .sort("-createdAt");
+    const filters = {};
 
-    const getSalesPromise = sales.map(async (sale) => {
+    let total = 0;
+
+    const { startDate, finalDate } = req.body;
+
+    if (startDate || finalDate) {
+      filters.createdAt = {};
+
+      const startDate = formatToTimeZone(
+        req.body.startDate,
+        "YYYY-MM-DDT00:mm:ss.SSSZ", // formatação de data e hora
+        {
+          timeZone: "America/Sao_Paulo",
+        }
+      );
+
+      const finalDate = formatToTimeZone(
+        req.body.finalDate,
+        "YYYY-MM-DDT23:59:ss.SSSZ", // formatação de data e hora
+        {
+          timeZone: "America/Sao_Paulo",
+        }
+      );
+
+      filters.createdAt.$gte = startDate;
+      filters.createdAt.$lte = finalDate;
+    }
+
+    let sales = await Sale.paginate(filters, {
+      page: req.query.page || 1,
+      limit: parseInt(req.query.limit_page) || 12,
+      populate: ["sale.products.product"],
+      sort: "-createdAt",
+    });
+
+    const getSalesPromise = sales.docs.map(async (sale) => {
       sale.formattedDate = moment(sale.createdAt).format("DD-MM-YYYY");
 
       return sale;
@@ -18,8 +51,31 @@ class SaleController {
 
     sales = await Promise.all(getSalesPromise);
 
+    if (startDate || finalDate) {
+      sales.map((sale) => {
+        total += sale.sale.total;
+      });
+    }
+
+    let dateFilter = true;
+
+    if (!startDate || !finalDate) {
+      sales = sales.map((sale) => {
+        if (
+          moment(String(sale.createdAt)).format("YYYY-MM-DD") ===
+          moment(String(Date(Date.now))).format("YYYY-MM-DD")
+        ) {
+          total += sale.sale.total;
+          dateFilter = false;
+          return sale;
+        }
+      });
+    }
+
     return res.render("sale/list", {
       sales: sales,
+      total: total,
+      dateFilter: dateFilter,
     });
   }
 

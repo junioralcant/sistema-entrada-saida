@@ -44,3 +44,15 @@ div.data-product {
     display: flex;
     justify-content: flex-end;
 }
+
+form strong {
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 10px;
+    background: #3BB5B4;
+    color: #174746
+}
+a {
+    margin-top: 20px;
+}
