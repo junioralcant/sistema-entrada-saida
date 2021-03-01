@@ -6,39 +6,20 @@
 
 {% block content %}
 <div class="content">
-    <h4>Listagem de Entrada e Saída</h4>
-
-    <form class="search" action="/productslist" method="post">
-        <div class="row">            
-            <div class="col-md-4">
-                <label for="startDate" class="form-label">Data Inicial</label>
-                <input id="startDate" class="form-control" type="date" name="startDate" />
-            </div>
-            <div class="col-md-4">
-                <label for="finalDate" class="form-label">Data final</label>
-                <input id="finalDate" class="form-control" type="date" name="finalDate" />
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
-            </div>
-        </div>
-    </form>
+    <h4>Entrada e Saída</h4>
 
      <div class="row">            
             <div class="col-md-4 box-data">
-                <label  class="form-label label-data">Entradas</label>
                 <br/>
-                <strong class="data entrance">{{ items.totalEntrance }}</strong>
+                <a href="/entrances" class="data balance">Entradas <i class="bi bi-bar-chart balance "></i></a>
             </div>
             <div class="col-md-4 box-data">
-                <label  class="form-label label-data">Saídas</label>
                 <br/>
-                <strong class="data exit">{{ items.totalExit }}</strong>
+                <a href="/exits" class="data exit">Saídas <i class="bi bi-bar-chart-steps exit"></i></a>
             </div>
             <div class="col-md-4 box-data">
-                <label  class="form-label label-data">Saldo</label> 
                 <br/>
-                <strong class="data balance">{{ items.balance }}</strong>
+                <a href="/entrancesandexitsdatails" class="data entrance">Detalhes <i class="bi bi-bar-chart-line entrance"></i> </a>
             </div>
         </div>
 </div>    

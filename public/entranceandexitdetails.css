@@ -24,58 +24,27 @@ form input.form-control  {
     margin-bottom: 10px;
 }
 
-a.data {
+strong.data {
     padding: 20px;
     padding-left: 80px;
     padding-right: 80px;
     border-radius: 10px;
 }
 
-a.entrance {
-    background: #FFC447;
-    color: #634C1C
+strong.entrance {
+    background: #3BB5B4;
+    color: #174746
 }
-
-i.entrance  {
-    color: #634C1C
-}
-
-a.exit {
+strong.exit {
     background: #FD6259;
     color: #632623
 }
 
-i.exit  {
-    color: #632623
-}
-
-a.balance {
-    background: #3BB5B4;
+strong.balance {
+    background: #309696;
     color: #174746
 }
 
-i.balance  {
-    color: #174746
-}
-
-a.entrance:hover {
-    background: #ddaa3d;
-    color: #634C1C
-}
-a.exit:hover {
-    background: #e65850;
-    color: #632623
-}
-
-a.balance:hover {
-    background: #2d8d8d;
-    color: #174746
-}
-
-i {
-    font-size: 30px;
-    margin-left: 10px;
-}
 
 label.label-data {
     margin-bottom: 20px;

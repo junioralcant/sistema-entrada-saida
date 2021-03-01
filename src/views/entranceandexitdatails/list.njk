@@ -1,0 +1,46 @@
+{% extends "layout.njk" %}
+{% block head %}
+    <title>Entradas e Saídas</title>
+     <link rel="stylesheet" href="/entranceandexitdetails.css"/>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h4>Detalhes de Entrada e Saída</h4>
+
+    <form class="search" action="/productslist" method="post">
+        <div class="row">            
+            <div class="col-md-4">
+                <label for="startDate" class="form-label">Data Inicial</label>
+                <input id="startDate" class="form-control" type="date" name="startDate" />
+            </div>
+            <div class="col-md-4">
+                <label for="finalDate" class="form-label">Data final</label>
+                <input id="finalDate" class="form-control" type="date" name="finalDate" />
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
+            </div>
+        </div>
+    </form>
+
+     <div class="row">            
+            <div class="col-md-4 box-data">
+                <label  class="form-label label-data">Entradas</label>
+                <br/>
+                <strong href="#" class="data entrance">{{items.totalEntrance}}</strong>
+            </div>
+            <div class="col-md-4 box-data">
+                <label  class="form-label label-data">Saídas</label>
+                <br/>
+                <strong href="#" class="data exit">{{items.totalExit}}</strong>
+            </div>
+            <div class="col-md-4 box-data">
+                <label  class="form-label label-data">Saldo</label> 
+                <br/>
+                <strong href="#" class="data balance">{{items.balance}}</strong>
+            </div>
+        </div>
+</div>    
+{% endblock %}
+       

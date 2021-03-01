@@ -59,6 +59,9 @@ routes.delete("/exits/delete/:id", ExitController.destroy);
 
 routes.get("/entrances", EntranceController.index);
 
-routes.get("/entrancesandexits", EntranceAndExitController.index);
+routes.get("/entrancesandexitsdatails", EntranceAndExitController.index);
+routes.get("/entrancesandexits", (req, res) => {
+  return res.render("entranceandexit/list");
+});
 
 module.exports = routes;

@@ -25,8 +25,7 @@ class EntranceAndExitController {
     });
 
     items.balance = items.totalEntrance - items.totalExit;
-
-    return res.render("entranceandexit/list", { items: items });
+    return res.render("entranceandexitdatails/list", { items: items });
   }
 }
 
