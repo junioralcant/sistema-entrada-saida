@@ -12,11 +12,11 @@
                 <h4>Entradas</h4>
             </div>
             <div class="col-md-6 box-balance">
-                <strong class="balance">R$ 600,00</strong>
+                <strong class="balance">Total: {{ total }}</strong>
             </div>
         </div>
 
-        <form class="search" action="/productslist" method="post">
+        <form class="search" action="/entrancesdate" method="post">
             <div class="row">            
                 <div class="col-md-4">
                     <label for="startDate" class="form-label">Data Inicial</label>
@@ -27,7 +27,10 @@
                     <input id="finalDate" class="form-control" type="date" name="finalDate" />
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
+                    <button class="btn btn-primary" type="submit">Pesquisar</button>
+                    {% if dateFilter != false %}
+                        <a href="/entrances" class="btn btn-secondary">Limpar</a>
+                    {% endif %}
                 </div>
             </div>
         </form>
@@ -39,11 +42,13 @@
                 <th>Data</th>
             </tr>
             {% for entrance in entrances %}
-                <tr>
-                    <td><a href="#">Venda</a></td>
-                    <td>{{ entrance.value }}</td>
-                    <td>{{ entrance.formattedDate }}</td>
-                </tr>
+                {% if entrance != null %}
+                    <tr>
+                        <td><a href="#">Venda</a></td>
+                        <td>{{ entrance.value }}</td>
+                        <td>{{ entrance.formattedDate }}</td>
+                    </tr>
+                {% endif %}
             {% endfor %}
         </table>
     </div>    
