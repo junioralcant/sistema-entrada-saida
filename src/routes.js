@@ -53,6 +53,8 @@ routes.delete("/sales/delete/:id", SaleController.destroy);
 routes.delete("/sales/deleteall", SaleController.destroyAll);
 
 routes.get("/exits", ExitController.index);
+routes.post("/exitsdates", ExitController.index);
+routes.get("/exits", ExitController.index);
 routes.post("/exits", ExitController.store);
 routes.get("/exits/edit/:id", ExitController.edit);
 routes.put("/exits/edit/:id", ExitController.update);
