@@ -54,7 +54,9 @@ form strong {
 
 strong.sales {
     background: #FFC447;
-    color: #634C1C
+    color: #634C1C;
+    margin-right: 10px;
+
 }
 
 a {

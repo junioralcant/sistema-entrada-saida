@@ -14,17 +14,16 @@
                     <label for="startDate" class="form-label">Data Inicial</label>
                     <input id="startDate" class="form-control" type="date" name="startDate" />
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <label for="finalDate" class="form-label">Data final</label>
                     <input id="finalDate" class="form-control" type="date" name="finalDate" />
                     </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
                 </div>
-                 <div class="col-md-2">
+                <div class="col-md-3">
                     <strong class="sales">Vendas: {{ sales.length }} </strong>
-                </div>
-                <div class="col-md-2">
+
                     <strong>Total: {{ total }}</strong>
                     {% if dateFilter != false %}
                         <a href="/sales" class="btn btn-secondary">Limpar</a>
