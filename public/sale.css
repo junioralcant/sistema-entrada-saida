@@ -45,20 +45,27 @@ div.data-product {
     justify-content: flex-end;
 }
 
-form strong {
+strong.balance {
     padding: 10px;
-    border-radius: 10px;
     background: #3BB5B4;
-    color: #174746
+    color: #174746;
+    border-radius: 10px;
+  
 }
 
 strong.sales {
+    border-radius: 10px;
+    padding: 10px;
     background: #FFC447;
     color: #634C1C;
     margin-right: 10px;
-
 }
 
 a {
     margin-top: 20px;
+}
+
+div.box-balance {
+    margin-bottom: 30px;
+    margin-top: 15px;
 }

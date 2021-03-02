@@ -8,23 +8,28 @@
 {% block content %}
     <div class="content">
 
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Vendas</h4>
+            </div>
+            <div class="col-md-6 box-balance">
+                <strong class="sales">Vendas: {{ entrances.length }} </strong>
+                <strong class="balance">Total: {{ total }}</strong>
+            </div>
+        </div>
+
         <form class="search" action="/salesdates" method="post">
             <div class="row">            
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="startDate" class="form-label">Data Inicial</label>
                     <input id="startDate" class="form-control" type="date" name="startDate" />
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="finalDate" class="form-label">Data final</label>
                     <input id="finalDate" class="form-control" type="date" name="finalDate" />
                     </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
-                </div>
-                <div class="col-md-3">
-                    <strong class="sales">Vendas: {{ sales.length }} </strong>
-
-                    <strong>Total: {{ total }}</strong>
                     {% if dateFilter != false %}
                         <a href="/sales" class="btn btn-secondary">Limpar</a>
                     {% endif %}
