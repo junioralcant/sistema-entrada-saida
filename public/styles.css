@@ -30,6 +30,7 @@ a, a:hover, a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
+    position:fixed; 
     height: 100vh;
     background-image: linear-gradient(#208EEB, #0E4F85);
     z-index: 999;
@@ -112,4 +113,7 @@ nav div.container-fluid {
     
 }
 
+.content {
+    margin-left: 250px;
+}
 

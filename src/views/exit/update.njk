@@ -5,26 +5,28 @@
 {% endblock %}
 
 {% block content %}
-    <h4 style="margin-top: 60px">Editar Despesa</h4>
-    <form action="/exits/edit/{{exit._id}}?_method=PUT" method="post">
-        <div class="row">
-            <div class="col-md-3">
-                <label class="form-label">Descrição da despesa</label>
-                <input class="form-control" type="text" name="descriptionExit" placeholder="Descrição da dispesa" value="{{exit.descriptionExit}}" />
+    <div class="content">
+        <h4 style="margin-top: 60px">Editar Despesa</h4>
+        <form action="/exits/edit/{{exit._id}}?_method=PUT" method="post">
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="form-label">Descrição da despesa</label>
+                    <input class="form-control" type="text" name="descriptionExit" placeholder="Descrição da dispesa" value="{{exit.descriptionExit}}" />
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Valor</label>
+                    <input class="form-control" type="text" name="value" placeholder="Valor" value="{{exit.value}}" />
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Data</label>
+                    <input class="form-control" type="date" name="date" placeholder="Data" value="{{exit.formattedDate}}"/>
+                </div>
+                <div class="row" style="margin-top: 30px"> 
+                    <button class="btn btn-primary" style="width: 100px" type="submit">Salvar</button>
+                    <a href="/exits" class="btn btn-danger" style="width: 100px; margin-left: 30px; color: #fff !important;">Cancelar</a>
+                </div>
             </div>
-            <div class="col-md-3">
-                <label class="form-label">Valor</label>
-                <input class="form-control" type="text" name="value" placeholder="Valor" value="{{exit.value}}" />
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Data</label>
-                <input class="form-control" type="date" name="date" placeholder="Data" value="{{exit.formattedDate}}"/>
-            </div>
-            <div class="row" style="margin-top: 30px"> 
-                <button class="btn btn-primary" style="width: 100px" type="submit">Salvar</button>
-                <a href="/exits" class="btn btn-danger" style="width: 100px; margin-left: 30px; color: #fff !important;">Cancelar</a>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}
         
