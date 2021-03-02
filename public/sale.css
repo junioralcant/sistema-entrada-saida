@@ -46,9 +46,7 @@ div.data-product {
 }
 
 form strong {
-    padding: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding: 10px;
     border-radius: 10px;
     background: #3BB5B4;
     color: #174746
