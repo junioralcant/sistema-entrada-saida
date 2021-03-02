@@ -48,13 +48,14 @@ class EntranceController {
 
     entrances = await Promise.all(getEntrancePromise);
 
+    let dateFilter = false;
+
     if (startDate || finalDate) {
+      dateFilter = true;
       entrances.map((entrance) => {
         total += entrance.value;
       });
     }
-
-    let dateFilter = true;
 
     if (!startDate || !finalDate) {
       entrances = entrances.map((entrance) => {
@@ -63,14 +64,19 @@ class EntranceController {
           moment(String(Date(Date.now))).format("YYYY-MM-DD")
         ) {
           total += entrance.value;
-          dateFilter = false;
           return entrance;
         }
       });
     }
 
+    let entrancesFilter = [];
+
+    entrances.map((sale) => {
+      if (sale != undefined) entrancesFilter.push(sale);
+    });
+
     return res.render("entrance/list", {
-      entrances: entrances,
+      entrances: entrancesFilter,
       total: total,
       dateFilter: dateFilter,
     });

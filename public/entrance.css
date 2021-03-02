@@ -33,12 +33,19 @@ div.box-input {
 }
 
 strong.balance {
-    padding: 15px;
-    font-size: 20px;
+    padding: 10px;
     background: #3BB5B4;
     color: #174746;
     border-radius: 10px;
   
+}
+
+strong.sales {
+    border-radius: 10px;
+    padding: 10px;
+    background: #FFC447;
+    color: #634C1C;
+    margin-right: 10px;
 }
 
 div.box-balance {
