@@ -64,6 +64,7 @@ routes.get("/entrances", EntranceController.index);
 routes.post("/entrancesdate", EntranceController.index);
 
 routes.get("/entrancesandexitsdatails", EntranceAndExitController.index);
+routes.post("/entrancesandexitsdatailsdates", EntranceAndExitController.index);
 routes.get("/entrancesandexits", (req, res) => {
   return res.render("entranceandexit/list");
 });

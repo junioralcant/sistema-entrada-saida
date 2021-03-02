@@ -8,7 +8,7 @@
 <div class="content">
     <h4>Detalhes de Entrada e Saída</h4>
 
-    <form class="search" action="/productslist" method="post">
+    <form class="search" action="/entrancesandexitsdatailsdates" method="post">
         <div class="row">            
             <div class="col-md-4">
                 <label for="startDate" class="form-label">Data Inicial</label>
@@ -20,6 +20,9 @@
             </div>
             <div class="col-md-4">
                 <button class="btn btn-primary bnt-exit" type="submit">Pesquisar</button>
+                {% if dateFilter != false %}
+                    <a href="/entrancesandexitsdatails" class="btn btn-secondary">Limpar</a>
+                {% endif %}
             </div>
         </div>
     </form>

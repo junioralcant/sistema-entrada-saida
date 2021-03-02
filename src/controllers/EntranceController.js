@@ -41,7 +41,7 @@ class EntranceController {
     });
 
     const getEntrancePromise = entrances.docs.map(async (entrance) => {
-      entrance.formattedDate = moment(entrance.date).format("DD-MM-YYYY");
+      entrance.formattedDate = moment(entrance.createdAt).format("DD-MM-YYYY");
 
       return entrance;
     });
