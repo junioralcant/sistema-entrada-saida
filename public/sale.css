@@ -53,6 +53,12 @@ form strong {
     background: #3BB5B4;
     color: #174746
 }
+
+strong.sales {
+    background: #FFC447;
+    color: #634C1C
+}
+
 a {
     margin-top: 20px;
 }

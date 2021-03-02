@@ -72,8 +72,14 @@ class SaleController {
       });
     }
 
+    let salesFilter = [];
+
+    sales.map((sale) => {
+      if (sale != undefined) salesFilter.push(sale);
+    });
+
     return res.render("sale/list", {
-      sales: sales,
+      sales: salesFilter,
       total: total,
       dateFilter: dateFilter,
     });
