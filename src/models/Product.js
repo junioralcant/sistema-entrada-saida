@@ -35,6 +35,14 @@ const ProductSchema = new mongoose.Schema({
     type: String,
   },
 
+  formattedPrice: {
+    type: String,
+  },
+
+  formattedSalePrice: {
+    type: String,
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,

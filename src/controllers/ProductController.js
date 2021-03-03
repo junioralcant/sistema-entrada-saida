@@ -1,5 +1,7 @@
-const Product = require("../models/Product");
 const moment = require("moment");
+const formatCurrency = require("../lib/formatCurrency");
+const Product = require("../models/Product");
+
 class ProductController {
   create(req, res) {
     return res.render("product/register");
@@ -42,7 +44,8 @@ class ProductController {
       product.formattedExpirationDate = moment(product.expirationDate).format(
         "DD-MM-YYYY"
       );
-
+      product.formattedPrice = formatCurrency.brl(product.price);
+      product.formattedSalePrice = formatCurrency.brl(product.salePrice);
       return product;
     });
 
