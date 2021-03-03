@@ -2,6 +2,7 @@ const { formatToTimeZone } = require("date-fns-timezone");
 const moment = require("moment");
 const Entrance = require("../models/Entrance");
 const Exit = require("../models/Exit");
+const formatCurrency = require("../lib/formatCurrency");
 
 class EntranceAndExitController {
   async index(req, res) {
@@ -112,8 +113,11 @@ class EntranceAndExitController {
     }
 
     items.balance = items.totalEntrance - items.totalExit;
+
     return res.render("entranceandexitdatails/list", {
-      items: items,
+      totalEntrance: formatCurrency.brl(items.totalEntrance),
+      totalExit: formatCurrency.brl(items.totalExit),
+      balance: formatCurrency.brl(items.balance),
       dateFilter: dateFilter,
     });
   }
