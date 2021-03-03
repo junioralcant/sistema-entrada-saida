@@ -12,15 +12,11 @@ const SaleSchema = new mongoose.Schema({
         },
         quantity: Number,
         price: Number,
-        formattedPrice: String,
       },
     ],
     total: Number,
   },
 
-  formattedDate: {
-    type: String,
-  },
   createdAt: {
     type: Date,
     default: Date.now,
