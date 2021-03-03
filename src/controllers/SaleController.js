@@ -4,6 +4,7 @@ const Sale = require("../models/Sale");
 const Cart = require("../lib/cart");
 const Product = require("../models/Product");
 const Entrance = require("../models/Entrance");
+const formatCurrency = require("../lib/formatCurrency");
 
 class SaleController {
   async index(req, res) {
@@ -45,6 +46,9 @@ class SaleController {
 
     const getSalesPromise = sales.docs.map(async (sale) => {
       sale.formattedDate = moment(sale.createdAt).format("DD-MM-YYYY");
+      sale.sale.products.map((product) => {
+        product.formattedPrice = formatCurrency.brl(product.price);
+      });
 
       return sale;
     });
@@ -80,7 +84,7 @@ class SaleController {
 
     return res.render("sale/list", {
       sales: salesFilter,
-      total: total,
+      total: formatCurrency.brl(total),
       dateFilter: dateFilter,
     });
   }

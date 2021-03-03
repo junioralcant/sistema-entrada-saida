@@ -37,17 +37,17 @@
             </div>
         </form>
 
-        <div class="row">
+        <div class="row box-sale-row">
             {% for sale in sales %}
                 {% if sale != null %}
-                    <div class="box-sale col-md-3">
+                    <div class="box-sale col-md-4">
                         <strong class="data">{{ sale.formattedDate }}</strong>
 
                         {% for product in sale.sale.products %}
                                 <div class="data-product">
                                     <strong>{{product.product.name}}</strong>
                                     <strong>QTD: {{product.quantity}}</strong>
-                                    <strong>Valor: {{product.price}}</strong>
+                                    <strong>Valor: {{product.formattedPrice}}</strong>
                                 </div>  
                             
                         {% endfor %}
