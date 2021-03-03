@@ -32,18 +32,25 @@ strong {
 
 div.data-product {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     border-radius: 10px;
     background: #fff;
     padding: 15px;
     margin-top: 15px
 }
 
-.total {
-    margin-top: 20px;
+.header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
+
+.total strong {
+    background: #3BB5B4;
+    color: #174746;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 
 strong.balance {
     padding: 10px;
@@ -68,4 +75,8 @@ a {
 div.box-balance {
     margin-bottom: 30px;
     margin-top: 15px;
+}
+
+button.button-delete {
+    margin-top: 10px;
 }

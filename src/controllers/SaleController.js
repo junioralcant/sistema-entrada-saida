@@ -50,6 +50,10 @@ class SaleController {
         product.formattedPrice = formatCurrency.brl(product.price);
       });
 
+      sale.sale.formattedTotal = formatCurrency.brl(sale.sale.total);
+
+      console.log(sale.sale.total);
+
       return sale;
     });
 

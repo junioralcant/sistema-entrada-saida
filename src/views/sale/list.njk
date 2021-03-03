@@ -40,9 +40,23 @@
         <div class="row box-sale-row">
             {% for sale in sales %}
                 {% if sale != null %}
-                    <div class="box-sale col-md-4">
-                        <strong class="data">{{ sale.formattedDate }}</strong>
+                    <div class="box-sale col-md-3">
+                        <div class="header"> 
+                            <div class="">
+                                <strong class="data">{{ sale.formattedDate }}</strong>
+                            </div>
+                        
+                            <div class="total">
+                                <strong>Total: {{ sale.sale.formattedTotal }}</strong>
+                            </div>
+                        </div>
 
+                          <div class="row box-button">
+                            <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST">
+                                <button class="btn btn-danger button-delete">Deletar</button>
+                            </form>
+                        </div>
+                        
                         {% for product in sale.sale.products %}
                                 <div class="data-product">
                                     <strong>{{product.product.name}}</strong>
@@ -51,23 +65,9 @@
                                 </div>  
                             
                         {% endfor %}
-
-                        <div class="total">
-                            <strong>Total: {{ sale.sale.total }}</strong>
-                        </div>
-
-                        <div class="row box-button">
-                            <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST">
-                                <button class="btn btn-danger button-delete">Deletar</button>
-                            </form>
-                        </div>
                     </div>
                 {% endif %}
-
             {% endfor %}
-
-            
-
         </div>
     </div>
 {% endblock %}        
