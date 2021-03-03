@@ -1,6 +1,7 @@
 const moment = require("moment");
 const { formatToTimeZone } = require("date-fns-timezone");
 const Entrance = require("../models/Entrance");
+const formatCurrency = require("../lib/formatCurrency");
 
 class EntranceController {
   async index(req, res) {
@@ -42,7 +43,7 @@ class EntranceController {
 
     const getEntrancePromise = entrances.docs.map(async (entrance) => {
       entrance.formattedDate = moment(entrance.createdAt).format("DD-MM-YYYY");
-
+      entrance.formattedValue = formatCurrency.brl(entrance.value);
       return entrance;
     });
 
@@ -77,7 +78,7 @@ class EntranceController {
 
     return res.render("entrance/list", {
       entrances: entrancesFilter,
-      total: total,
+      total: formatCurrency.brl(total),
       dateFilter: dateFilter,
     });
   }
