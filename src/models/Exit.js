@@ -13,8 +13,6 @@ const ExitSchema = new mongoose.Schema({
     type: Date,
   },
 
-  formattedDate: String,
-
   createdAt: {
     type: Date,
     default: Date.now,

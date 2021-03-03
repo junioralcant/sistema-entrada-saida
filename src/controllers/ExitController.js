@@ -1,6 +1,7 @@
 const moment = require("moment");
 const { formatToTimeZone } = require("date-fns-timezone");
 const Exit = require("../models/Exit");
+const formatCurrency = require("../lib/formatCurrency");
 
 class ExitController {
   async index(req, res) {
@@ -41,6 +42,8 @@ class ExitController {
 
     const getExitPromise = exits.docs.map(async (exit) => {
       exit.formattedDate = moment(exit.date).format("DD-MM-YYYY");
+      exit.formattedValue = formatCurrency.brl(exit.value);
+
       return exit;
     });
 
@@ -75,7 +78,7 @@ class ExitController {
 
     return res.render("exit/list", {
       exits: exitsFilter,
-      total: total,
+      total: formatCurrency.brl(total),
       dateFilter: dateFilter,
     });
   }
