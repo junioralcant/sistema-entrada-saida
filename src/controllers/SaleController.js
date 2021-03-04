@@ -85,8 +85,6 @@ class SaleController {
       if (sale != undefined) salesFilter.push(sale);
     });
 
-    console.log(dateFilter);
-
     return res.render("sale/list", {
       sales: salesFilter,
       total: formatCurrency.brl(total),
