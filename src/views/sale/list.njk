@@ -52,7 +52,7 @@
                         </div>
 
                           <div class="row box-button">
-                            <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST">
+                            <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST" onSubmit="deleteSale(event)">
                                 <button class="btn btn-danger button-delete">Deletar</button>
                             </form>
                         </div>
@@ -70,6 +70,14 @@
             {% endfor %}
         </div>
     </div>
+
+<script>
+    function deleteSale(e) {
+        if(!window.confirm("Deseja realmente deletar essa venda ?")) {
+            e.returnValue = false; 
+        }
+    }
+</script>
 {% endblock %}        
 
         
