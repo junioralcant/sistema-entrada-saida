@@ -48,15 +48,22 @@
                     <td>{{ product.formattedExpirationDate }}</td>
                     <td>
                         <div class="action">
-                            <a href="/products/edit/{{product._id}}"><i class="bi bi-pencil-fill"></i></a>
-                            <form action="/products/delete/{{product._id}}?_method=DELETE" method="post">
-                                <button class="delete" type="submit"><i class="bi bi-trash-fill"></i></button>
+                            <a href="/products/edit/{{product._id}}"><i class="bi bi-pencil-fill"></i></a>       
+                            <form  name="myform" action="/products/delete/{{product._id}}?_method=DELETE" method="post" onSubmit="deleteProdutct(event)">
+                                <button type="submit" class="delete"><i class="bi bi-trash-fill"></i></button>
                             </form>
                         </div>
                     </td>
                 </tr>
             {% endfor %}
         </table>
+
     </div>
-   
+<script>
+    function deleteProdutct(e) {
+        if(!window.confirm("Deseja realmente deletar o protudo ?")) {
+            e.returnValue = false; 
+        }
+    }
+</script>
 {% endblock %}
