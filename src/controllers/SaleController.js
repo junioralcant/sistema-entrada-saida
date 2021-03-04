@@ -52,20 +52,20 @@ class SaleController {
 
       sale.sale.formattedTotal = formatCurrency.brl(sale.sale.total);
 
-      console.log(sale.sale.total);
-
       return sale;
     });
 
     sales = await Promise.all(getSalesPromise);
 
+    let dateFilter = false;
+
     if (startDate || finalDate) {
       sales.map((sale) => {
         total += sale.sale.total;
       });
-    }
 
-    let dateFilter = true;
+      dateFilter = true;
+    }
 
     if (!startDate || !finalDate) {
       sales = sales.map((sale) => {
@@ -74,7 +74,6 @@ class SaleController {
           moment(String(Date(Date.now))).format("YYYY-MM-DD")
         ) {
           total += sale.sale.total;
-          dateFilter = false;
           return sale;
         }
       });
@@ -85,6 +84,8 @@ class SaleController {
     sales.map((sale) => {
       if (sale != undefined) salesFilter.push(sale);
     });
+
+    console.log(dateFilter);
 
     return res.render("sale/list", {
       sales: salesFilter,
