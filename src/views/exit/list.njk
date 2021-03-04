@@ -61,7 +61,7 @@
                     <td>
                         <div class="action">
                             <a href="/exits/edit/{{exit._id}}"><i class="bi bi-pencil-fill"></i></a>
-                            <form action="/exits/delete/{{exit._id}}?_method=DELETE" method="post">
+                            <form action="/exits/delete/{{exit._id}}?_method=DELETE" method="post" onSubmit="deleteExit(event)" >
                                 <button class="delete" type="submit"><i class="bi bi-trash-fill"></i></button>
                             </form>
                         </div>
@@ -70,6 +70,13 @@
             {% endfor %}
         </table>
     </div>
+<script>
+    function deleteExit(e) {
+        if(!window.confirm("Deseja realmente deletar o protudo ?")) {
+            e.returnValue = false; 
+        }
+    }
+</script> 
 {% endblock %}
         
 
