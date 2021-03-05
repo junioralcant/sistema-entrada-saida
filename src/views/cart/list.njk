@@ -15,14 +15,12 @@
 
             <table class="table table-striped table-hover">
                 <tr>
-                    <th>Codigo</th>
                     <th>Nome</th>
                     <th>Preço</th>
                     <th>Ação</th>
                 </tr>
                 {% for product in products %}
                         <tr>
-                        <td>{{ product.productCode }}</td>
                             <td>{{ product.name }}</td>
                             <td>{{ product.salePrice }}</td>
                             <td>
