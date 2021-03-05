@@ -11,10 +11,6 @@
         <form action="/products/edit/{{product._id}}?_method=PUT" method="post">
             <div class="row">
                 <div class="col-md-3">
-                    <label class="form-label">Codigo do produto</label>
-                    <input class="form-control" type="text" name="productCode" placeholder="Codigo do produto" value="{{product.productCode}}" />
-                </div>
-                <div class="col-md-3">
                     <label class="form-label">Nome do produto</label>
                     <input class="form-control" type="text" name="name" placeholder="Nome do produto" value="{{product.name}}"/>
                 </div>

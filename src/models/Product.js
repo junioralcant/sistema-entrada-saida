@@ -22,11 +22,6 @@ const ProductSchema = new mongoose.Schema({
     required: true,
   },
 
-  productCode: {
-    type: String,
-    required: true,
-  },
-
   expirationDate: {
     type: Date,
   },

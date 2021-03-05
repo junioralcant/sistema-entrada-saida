@@ -10,7 +10,6 @@
 
         <form class="form-product" action="/products" method="post">
             <div class="row">
-                <input class="form-control" type="text" name="productCode" placeholder="Codigo do produto"/>
                 <input class="form-control" type="text" name="name" placeholder="Nome do produto"/>
                 <input class="form-control" type="text" name="price" placeholder="Preço"/>
                 <input class="form-control" type="text" name="salePrice" placeholder="Preço de venda"/>
@@ -30,7 +29,6 @@
         
         <table class="table table-striped table-hover">
             <tr>
-                <th>Codigo</th>
                 <th>Nome</th>
                 <th>Preço</th>
                 <th>Preço de Venda</th>
@@ -40,7 +38,6 @@
             </tr>
             {% for product in products %}
                 <tr>
-                <td>{{ product.productCode }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.formattedPrice }}</td>
                     <td>{{ product.formattedSalePrice }}</td>
