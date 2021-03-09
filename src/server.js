@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const nunjucks = require("nunjucks");
@@ -12,7 +14,7 @@ app.use(cors());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/cms", {
+mongoose.connect(process.env.DB_URL, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
