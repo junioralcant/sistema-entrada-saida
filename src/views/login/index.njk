@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="/login.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">  
+        
+    </head>
+    <body>
+        <div class="content">
+            <div class="box-content">
+            <p>{{error}}</p>
+                <form action='/session' method="post">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" name="email" value="{{ user.email }}" class="form-control" id="email" placeholder="name@example.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Senha</label>
+                        <input type="password" name="password" value="{{ user.password }}" class="form-control" id="password" placeholder="*********">
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Logar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+        
+
+

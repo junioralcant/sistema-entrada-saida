@@ -9,8 +9,17 @@ const SaleController = require("./controllers/SaleController");
 const ExitController = require("./controllers/ExitController");
 const EntranceController = require("./controllers/EntranceController");
 const EntranceAndExitController = require("./controllers/EntranceAndExitController");
+const SessionController = require("./controllers/SessionController");
+
+const middleware = require("./middlewares/session");
 
 const routes = express.Router();
+
+routes.get("/login", SessionController.loginForm);
+routes.post("/logout", SessionController.logout);
+routes.post("/session", SessionController.store);
+
+routes.use(middleware);
 
 routes.get("/", (req, res) => {
   return res.render("home/index");

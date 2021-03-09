@@ -113,6 +113,19 @@ nav div.container-fluid {
     
 }
 
+.form-logout {
+    position: absolute;
+    bottom: 0;
+    margin-left: 10px;
+    padding: 10px
+}
+
+button.btn-exit {
+    font-size: 17px;
+    background: none;
+    color:#A6D2F7
+}
+
 .content {
     margin-left: 250px;
 }
