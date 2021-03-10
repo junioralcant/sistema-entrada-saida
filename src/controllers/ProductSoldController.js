@@ -1,12 +1,6 @@
-const { formatToTimeZone } = require("date-fns-timezone");
-
-const getHours = require("date-fns/getHours");
-
 const ProductSold = require("../models/ProductSold");
 const Product = require("../models/Product");
 const moment = require("moment");
-
-const User = require("../models/User");
 
 class ProductSoldController {
   create(req, res) {

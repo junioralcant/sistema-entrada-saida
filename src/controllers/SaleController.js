@@ -1,5 +1,4 @@
 const moment = require("moment");
-const { formatToTimeZone } = require("date-fns-timezone");
 const Sale = require("../models/Sale");
 const Cart = require("../lib/cart");
 const Product = require("../models/Product");
@@ -17,20 +16,12 @@ class SaleController {
     if (startDate || finalDate) {
       filters.createdAt = {};
 
-      const startDate = formatToTimeZone(
-        req.body.startDate,
-        "YYYY-MM-DDT00:mm:ss.SSSZ", // formatação de data e hora
-        {
-          timeZone: "America/Sao_Paulo",
-        }
+      const startDate = moment(req.body.startDate).format(
+        "YYYY-MM-DDT00:mm:ss.SSSZ"
       );
 
-      const finalDate = formatToTimeZone(
-        req.body.finalDate,
-        "YYYY-MM-DDT23:59:ss.SSSZ", // formatação de data e hora
-        {
-          timeZone: "America/Sao_Paulo",
-        }
+      const finalDate = moment(req.body.finalDate).format(
+        "YYYY-MM-DDT23:59:ss.SSSZ"
       );
 
       filters.createdAt.$gte = startDate;

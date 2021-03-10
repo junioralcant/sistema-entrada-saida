@@ -1,4 +1,3 @@
-const { formatToTimeZone } = require("date-fns-timezone");
 const moment = require("moment");
 const Entrance = require("../models/Entrance");
 const Exit = require("../models/Exit");
@@ -27,20 +26,12 @@ class EntranceAndExitController {
       filtersEntrance.createdAt = {};
       filtersExit.date = {};
 
-      const startDate = formatToTimeZone(
-        req.body.startDate,
-        "YYYY-MM-DDT00:mm:ss.SSSZ", // formatação de data e hora
-        {
-          timeZone: "America/Sao_Paulo",
-        }
+      const startDate = moment(req.body.startDate).format(
+        "YYYY-MM-DDT00:mm:ss.SSSZ"
       );
 
-      const finalDate = formatToTimeZone(
-        req.body.finalDate,
-        "YYYY-MM-DDT23:59:ss.SSSZ", // formatação de data e hora
-        {
-          timeZone: "America/Sao_Paulo",
-        }
+      const finalDate = moment(req.body.finalDate).format(
+        "YYYY-MM-DDT23:59:ss.SSSZ"
       );
 
       filtersEntrance.createdAt.$gte = startDate;
