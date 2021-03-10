@@ -1,5 +1,3 @@
-const { formatToTimeZone } = require("date-fns-timezone");
-
 const formatCurrency = {
   brl(value) {
     value = new Intl.NumberFormat("pt-BR", {
