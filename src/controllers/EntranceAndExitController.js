@@ -74,7 +74,7 @@ class EntranceAndExitController {
 
       exits = exits.docs.map((exit) => {
         if (
-          moment(String(exit.createdAt)).format("YYYY-MM-DD") ===
+          moment(String(exit.date)).format("YYYY-MM-DD") ===
           moment(String(Date(Date.now))).format("YYYY-MM-DD")
         ) {
           return exit;
