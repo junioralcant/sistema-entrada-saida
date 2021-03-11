@@ -86,7 +86,9 @@ class ProductController {
       id,
       {
         ...req.body,
-        expirationDate: moment(req.body.expirationDate).format(),
+        expirationDate: !req.body.expirationDate
+          ? null
+          : moment(req.body.expirationDate).format(),
       },
       { new: true }
     );
