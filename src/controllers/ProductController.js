@@ -59,7 +59,9 @@ class ProductController {
   async store(req, res) {
     await Product.create({
       ...req.body,
-      expirationDate: moment(req.body.expirationDate).format(),
+      expirationDate: !req.body.expirationDate
+        ? null
+        : moment(req.body.expirationDate).format(),
     });
 
     return res.redirect("/productslist");
