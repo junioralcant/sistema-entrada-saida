@@ -51,10 +51,7 @@ class EntranceController {
 
     if (!startDate || !finalDate) {
       entrances = entrances.map((entrance) => {
-        if (
-          moment(String(entrance.createdAt)).format("YYYY-MM-DD") ===
-          moment(String(Date(Date.now))).format("YYYY-MM-DD")
-        ) {
+        if (moment(entrance.createdAt).month() === moment(Date.now()).month()) {
           total += entrance.value;
           return entrance;
         }
