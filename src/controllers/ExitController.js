@@ -51,10 +51,7 @@ class ExitController {
 
     if (!startDate || !finalDate) {
       exits = exits.map((exit) => {
-        if (
-          moment(String(exit.date)).format("YYYY-MM-DD") ===
-          moment(String(Date(Date.now))).format("YYYY-MM-DD")
-        ) {
+        if (moment(exit.date).month() === moment(Date.now()).month()) {
           total += exit.value;
           return exit;
         }
