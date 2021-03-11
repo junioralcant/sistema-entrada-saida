@@ -60,10 +60,7 @@ class SaleController {
 
     if (!startDate || !finalDate) {
       sales = sales.map((sale) => {
-        if (
-          moment(String(sale.createdAt)).format("YYYY-MM-DD") ===
-          moment(String(Date(Date.now))).format("YYYY-MM-DD")
-        ) {
+        if (moment(sale.createdAt).month() === moment(Date.now()).month()) {
           total += sale.sale.total;
           return sale;
         }
