@@ -71,6 +71,8 @@ class ExitController {
       exits: exitsFilter,
       total: formatCurrency.brl(total),
       dateFilter: dateFilter,
+      startDate,
+      finalDate,
     });
   }
 

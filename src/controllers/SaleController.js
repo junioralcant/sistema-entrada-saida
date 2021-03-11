@@ -80,6 +80,8 @@ class SaleController {
       sales: salesFilter,
       total: formatCurrency.brl(total),
       dateFilter: dateFilter,
+      startDate,
+      finalDate,
     });
   }
 

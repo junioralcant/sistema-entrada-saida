@@ -110,6 +110,8 @@ class EntranceAndExitController {
       totalExit: formatCurrency.brl(items.totalExit),
       balance: formatCurrency.brl(items.balance),
       dateFilter: dateFilter,
+      startDate,
+      finalDate,
     });
   }
 }

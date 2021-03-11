@@ -71,6 +71,8 @@ class EntranceController {
       entrances: entrancesFilter,
       total: formatCurrency.brl(total),
       dateFilter: dateFilter,
+      startDate,
+      finalDate,
     });
   }
 }
