@@ -1,5 +1,4 @@
 const moment = require("moment");
-const { formatToTimeZone } = require("date-fns-timezone");
 const Entrance = require("../models/Entrance");
 const formatCurrency = require("../lib/formatCurrency");
 
