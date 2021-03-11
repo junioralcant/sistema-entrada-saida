@@ -55,19 +55,13 @@ class EntranceAndExitController {
 
     if (!startDate || !finalDate) {
       entrances = entrances.docs.map((entrance) => {
-        if (
-          moment(String(entrance.createdAt)).format("YYYY-MM-DD") ===
-          moment(String(Date(Date.now))).format("YYYY-MM-DD")
-        ) {
+        if (moment(entrance.createdAt).month() === moment(Date.now()).month()) {
           return entrance;
         }
       });
 
       exits = exits.docs.map((exit) => {
-        if (
-          moment(String(exit.date)).format("YYYY-MM-DD") ===
-          moment(String(Date(Date.now))).format("YYYY-MM-DD")
-        ) {
+        if (moment(exit.date).month() === moment(Date.now()).month()) {
           return exit;
         }
       });
