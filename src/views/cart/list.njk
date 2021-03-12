@@ -41,7 +41,7 @@
 
                         <span class="quantity">QTD: {{item.quantity}}</span>
 
-                        <span class="price">Valor: {{item.price}}</span>
+                        <span class="price">Valor: {{item.formattedPrice}}</span>
 
                         <div class="quantity-control">
                             <form action="/cart/remove-one/{{item.product._id}}" method="post">
@@ -61,7 +61,7 @@
                 {% endfor %}
                 <div class="total">
                     <p>Total:</p> 
-                    <span>{{cart.total.price}}</span>
+                    <span>{{cart.total.formattedPrice}}</span>
                 </div>
 
                 <div class="finish">

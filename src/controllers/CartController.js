@@ -1,6 +1,7 @@
 const moment = require("moment");
 const Cart = require("../lib/cart");
 const Product = require("../models/Product");
+const formatCurrency = require("../lib/formatCurrency");
 
 class CartController {
   async index(req, res) {
@@ -33,6 +34,12 @@ class CartController {
     let { cart } = req.session;
 
     cart = Cart.init(cart);
+
+    cart.items.map((item) => {
+      item.formattedPrice = formatCurrency.brl(item.price);
+    });
+
+    cart.total.formattedPrice = formatCurrency.brl(cart.total.price);
 
     return res.render("cart/list", { cart });
   }
