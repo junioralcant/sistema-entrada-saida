@@ -43,6 +43,12 @@ class SaleController {
 
       sale.sale.formattedTotal = formatCurrency.brl(sale.sale.total);
 
+      if (sale.sale.descount) {
+        sale.sale.formattedDescount = formatCurrency.brl(sale.sale.descount);
+      } else {
+        sale.sale.formattedDescount = formatCurrency.brl(0);
+      }
+
       return sale;
     });
 
@@ -84,12 +90,14 @@ class SaleController {
 
   async store(req, res) {
     let { cart } = req.session;
+    const { descount } = req.body;
 
     if (cart.items <= 0) return res.redirect("/cart");
 
     const sale = await Sale.create({
       sale: {
-        total: cart.total.price,
+        total: cart.total.price - descount,
+        descount,
       },
     });
 
@@ -111,7 +119,7 @@ class SaleController {
 
     await Entrance.create({
       sale: sale._id,
-      value: cart.total.price,
+      value: cart.total.price - descount,
     });
 
     cart.items.map(async (item) => {

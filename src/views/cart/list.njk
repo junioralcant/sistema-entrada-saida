@@ -63,16 +63,21 @@
                     <p>Total:</p> 
                     <span>{{cart.total.formattedPrice}}</span>
                 </div>
-
-                <div class="finish">
+                
                     <form  action="/sales" method="POST">
+
+                        <div class="descount">
+                            <input type="text" placeholder="Desconto" name="descount"/>
+                        </div>
+
+                        <div class="finish">
                         <button class="btn btn-success"> Finalizar Venda </button>
                     </form>
 
-                    <form  action="/sales/deleteall?_method=DELETE" method="POST">
-                        <button class="btn btn-danger"> Cancelar Venda </button>
-                    </form>
-                </div>
+                            <form  action="/sales/deleteall?_method=DELETE" method="POST">
+                                <button class="btn btn-danger"> Cancelar Venda </button>
+                            </form>
+                        </div>
             </div>
         </div>
     {% endblock %}

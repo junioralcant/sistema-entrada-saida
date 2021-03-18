@@ -51,7 +51,11 @@
                             </div>
                         </div>
 
-                          <div class="row box-button">
+                        <div class="box-descount">
+                            <strong>Desconto: {{sale.sale.formattedDescount}} </strong>
+                        </div>
+
+                        <div class="row box-button">
                             <form  action="/sales/delete/{{sale._id}}?_method=DELETE" method="POST" onSubmit="deleteSale(event)">
                                 <button class="btn btn-danger button-delete">Deletar</button>
                             </form>

@@ -68,8 +68,23 @@ button.delete {
     margin-right: 10px;
 }
 
+.descount {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+.descount input{
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid rgb(31, 30, 30) ;
+}
+
+
 .finish {
     display: flex;
+    margin-bottom: 5px
 }
 
 .finish button {

@@ -14,6 +14,7 @@ const SaleSchema = new mongoose.Schema({
         price: Number,
       },
     ],
+    descount: Number,
     total: Number,
   },
 
