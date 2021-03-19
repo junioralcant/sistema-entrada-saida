@@ -10,17 +10,18 @@
 
         <form class="form-product" action="/products" method="post" onSubmit="registerProduct(event)">
             <div class="row">
+                <p class="message-error">{{message}}</p>
                 <div class="col-md-3">
-                    <label class="form-label">Nome do produto</label>
-                    <input class="form-control" type="text" name="name" placeholder="Nome do produto" value="{{product.name}}"/>
+                    <label class="form-label">Nome do produto *</label>
+                    <input class="form-control" type="text" name="name" placeholder="Nome do produto" value="{{name}}"/>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Preço de venda</label>
-                    <input class="form-control" type="text" name="salePrice" placeholder="Preço de venda" value="{{product.salePrice}}"/>
+                    <label class="form-label">Preço de venda *</label>
+                    <input class="form-control" type="text" name="salePrice" placeholder="Preço de venda" value="{{salePrice}}"/>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Quantidade</label>
-                    <input class="form-control" type="text" name="amount" placeholder="Quantidade" value="{{product.amount}}"/>
+                    <label class="form-label">Quantidade *</label>
+                    <input class="form-control" type="text" name="amount" placeholder="Quantidade" value="{{amount}}"/>
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Data de Vencimento</label>

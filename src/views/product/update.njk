@@ -10,20 +10,17 @@
         <h4 style="margin-top: 60px">Editar Produto</h4>
         <form action="/products/edit/{{product._id}}?_method=PUT" method="post">
             <div class="row">
+                <p class="message-error">{{message}}</p>
                 <div class="col-md-3">
-                    <label class="form-label">Nome do produto</label>
-                    <input class="form-control" type="text" name="name" placeholder="Nome do produto" value="{{product.name}}"/>
+                    <label class="form-label">Nome do produto *</label>
+                    <input class="form-control" type="text" name="name" placeholder="Nome do produto *" value="{{product.name}}"/>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Preço</label>
-                    <input class="form-control" type="text" name="price" placeholder="Preço" value="{{product.price}}"/>
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label">Preço de venda</label>
+                    <label class="form-label">Preço de venda *</label>
                     <input class="form-control" type="text" name="salePrice" placeholder="Preço de venda" value="{{product.salePrice}}"/>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Quantidade</label>
+                    <label class="form-label">Quantidade *</label>
                     <input class="form-control" type="text" name="amount" placeholder="Quantidade" value="{{product.amount}}"/>
                 </div>
                 <div class="col-md-3">

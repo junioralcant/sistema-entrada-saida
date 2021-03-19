@@ -19,6 +19,10 @@ form.form-product {
     margin-bottom: 30px;
 }
 
+p.message-error {
+    color: #FD6259;
+}
+
 button.bnt-product {
     width: 120px
 }

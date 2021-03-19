@@ -58,6 +58,31 @@ class ProductController {
   }
 
   async store(req, res) {
+    const { name, salePrice, amount } = req.body;
+
+    if (!name || !salePrice || !amount) {
+      let products = await Product.find();
+
+      const getProductsPromise = products.map(async (product) => {
+        product.formattedExpirationDate = moment(product.expirationDate).format(
+          "DD-MM-YYYY"
+        );
+        product.formattedPrice = formatCurrency.brl(product.price);
+        product.formattedSalePrice = formatCurrency.brl(product.salePrice);
+        return product;
+      });
+
+      products = await Promise.all(getProductsPromise);
+
+      return res.render("product/list", {
+        name,
+        salePrice,
+        amount,
+        products: products,
+        message: "Preencha os campos obrigatórios (*) para continuar!",
+      });
+    }
+
     await Product.create({
       ...req.body,
       expirationDate: !req.body.expirationDate
@@ -77,11 +102,27 @@ class ProductController {
       "YYYY-MM-DD"
     );
 
-    return res.render("product/update", { product: product });
+    return res.render("product/update", {
+      product: product,
+    });
   }
 
   async update(req, res) {
     const { id } = req.params;
+    const { name, salePrice, amount } = req.body;
+
+    if (!name || !salePrice || !amount) {
+      let product = await Product.findById(id);
+
+      product.formattedExpirationDate = moment(product.expirationDate).format(
+        "YYYY-MM-DD"
+      );
+
+      return res.render("product/update", {
+        product: product,
+        message: "Preencha os campos obrigatórios (*) para continuar!",
+      });
+    }
 
     await Product.findByIdAndUpdate(
       id,
