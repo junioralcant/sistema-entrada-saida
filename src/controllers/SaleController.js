@@ -43,10 +43,8 @@ class SaleController {
 
       sale.sale.formattedTotal = formatCurrency.brl(sale.sale.total);
 
-      if (sale.sale.descount) {
-        sale.sale.formattedDescount = formatCurrency.brl(sale.sale.descount);
-      } else {
-        sale.sale.formattedDescount = formatCurrency.brl(0);
+      if (!sale.sale.descount) {
+        sale.sale.descount = 0;
       }
 
       return sale;
@@ -96,7 +94,7 @@ class SaleController {
 
     const sale = await Sale.create({
       sale: {
-        total: cart.total.price - descount,
+        total: cart.total.price - (cart.total.price / 100) * descount,
         descount,
       },
     });
