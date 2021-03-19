@@ -18,17 +18,18 @@
         </div>
         <form class="cad" action="/exits" method="post">
             <div class="row">
+                <p class="message-error">{{message}}</p>
                 <div class="col-md-3">
-                    <label class="form-label">Descrição da despesa</label>
-                    <input class="form-control" type="text" name="descriptionExit" placeholder="Descrição da dispesa" value="{{exit.descriptionExit}}" />
+                    <label class="form-label">Descrição da despesa *</label>
+                    <input class="form-control" type="text" name="descriptionExit" placeholder="Descrição da dispesa" value="{{descriptionExit}}" />
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Valor</label>
-                    <input class="form-control" type="text" name="value" placeholder="Valor" value="{{exit.value}}" />
+                    <label class="form-label">Valor *</label>
+                    <input class="form-control" type="text" name="value" placeholder="Valor" value="{{value}}" />
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Data</label>
-                    <input class="form-control" type="date" name="date" placeholder="Data" value="{{exit.formattedDate}}"/>
+                    <label class="form-label">Data *</label>
+                    <input class="form-control" type="date" name="date" placeholder="Data" value="{{date}}"/>
                 </div>
                  <div class="col-md-3">
                  <br/>

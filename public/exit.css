@@ -8,6 +8,10 @@ form input.form-control  {
     margin-bottom: 10px;
 }
 
+p.message-error {
+    color: #FD6259;
+}
+
 button.bnt-exit {
     width: 120px;
     height: 40px;

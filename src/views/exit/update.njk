@@ -2,6 +2,7 @@
 
 {% block head %}
     <title>Editar Despesa</title>
+    <link rel="stylesheet" href="/exit.css"/>
 {% endblock %}
 
 {% block content %}
@@ -9,16 +10,17 @@
         <h4 style="margin-top: 60px">Editar Despesa</h4>
         <form action="/exits/edit/{{exit._id}}?_method=PUT" method="post">
             <div class="row">
+                <p class="message-error">{{message}}</p>
                 <div class="col-md-3">
-                    <label class="form-label">Descrição da despesa</label>
+                    <label class="form-label">Descrição da despesa *</label>
                     <input class="form-control" type="text" name="descriptionExit" placeholder="Descrição da dispesa" value="{{exit.descriptionExit}}" />
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Valor</label>
+                    <label class="form-label">Valor *</label>
                     <input class="form-control" type="text" name="value" placeholder="Valor" value="{{exit.value}}" />
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Data</label>
+                    <label class="form-label">Data *</label>
                     <input class="form-control" type="date" name="date" placeholder="Data" value="{{exit.formattedDate}}"/>
                 </div>
                 <div class="row" style="margin-top: 30px"> 

@@ -74,6 +74,48 @@ class ExitController {
   }
 
   async store(req, res) {
+    const { descriptionExit, value, date } = req.body;
+
+    let total = 0;
+
+    if (!descriptionExit || !value || !date) {
+      let exits = await Exit.find().sort("-date");
+
+      const getExitPromise = exits.map(async (exit) => {
+        exit.formattedDate = moment(exit.date).format("DD-MM-YYYY");
+        exit.formattedValue = formatCurrency.brl(exit.value);
+
+        return exit;
+      });
+
+      exits = await Promise.all(getExitPromise);
+
+      let dateFilter = false;
+
+      exits = exits.map((exit) => {
+        if (moment(exit.date).month() === moment(Date.now()).month()) {
+          total += exit.value;
+          return exit;
+        }
+      });
+
+      let exitsFilter = [];
+
+      exits.map((exit) => {
+        if (exit != undefined) exitsFilter.push(exit);
+      });
+
+      return res.render("exit/list", {
+        exits: exitsFilter,
+        total: formatCurrency.brl(total),
+        dateFilter: dateFilter,
+        value,
+        descriptionExit,
+        date: moment(date).format("YYYY-MM-DD"),
+        message: "Preencha os campos obrigatórios (*) para continuar!",
+      });
+    }
+
     await Exit.create({ ...req.body, date: moment(req.body.date).format() });
 
     return res.redirect("/exits");
@@ -91,6 +133,18 @@ class ExitController {
 
   async update(req, res) {
     const { id } = req.params;
+    const { descriptionExit, value, date } = req.body;
+
+    if (!descriptionExit || !value || !date) {
+      let exit = await Exit.findById(id);
+
+      exit.formattedDate = moment(exit.date).format("YYYY-MM-DD");
+
+      return res.render("exit/update", {
+        exit: exit,
+        message: "Preencha os campos obrigatórios (*) para continuar!",
+      });
+    }
 
     await Exit.findByIdAndUpdate(
       id,
