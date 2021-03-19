@@ -58,7 +58,7 @@ class ProductController {
   }
 
   async store(req, res) {
-    const { name, salePrice, amount } = req.body;
+    const { name, salePrice, amount, expirationDate } = req.body;
 
     if (!name || !salePrice || !amount) {
       let products = await Product.find();
@@ -79,6 +79,7 @@ class ProductController {
         salePrice,
         amount,
         products: products,
+        expirationDate: moment(expirationDate).format("YYYY-MM-DD"),
         message: "Preencha os campos obrigatórios (*) para continuar!",
       });
     }
