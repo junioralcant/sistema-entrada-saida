@@ -13,10 +13,9 @@ class ProductController {
 
   async index(req, res) {
     const filters = {};
+    let filterActive = false;
 
     if (req.body.nome) {
-      filters.nome = new RegExp(req.body.nome, "i");
-
       let products = await Product.find({
         name: new RegExp(req.body.nome, "i"),
       });
@@ -26,13 +25,48 @@ class ProductController {
           "DD-MM-YYYY"
         );
 
+        product.formattedSalePrice = formatCurrency.brl(product.salePrice);
+
         return product;
       });
 
       products = await Promise.all(getProductsPromise);
 
+      filterActive = true;
+
       return res.render("product/list", {
         products: products,
+        filterActive,
+      });
+    }
+
+    if (req.body.searchBarcode) {
+      let products = await Product.find({
+        barcode: req.body.searchBarcode,
+      });
+
+      if (products.length <= 0) {
+        return res.redirect("/productslist");
+      }
+
+      const getProductsPromise = products.map(async (product) => {
+        product.formattedExpirationDate = moment(product.expirationDate).format(
+          "DD-MM-YYYY"
+        );
+
+        product.formattedSalePrice = formatCurrency.brl(product.salePrice);
+
+        return product;
+      });
+
+      products = await Promise.all(getProductsPromise);
+
+      filterActive = true;
+
+      return res.render("product/list", {
+        products: products,
+        searchBarcode: req.body.searchBarcode,
+        filterActive,
       });
     }
 
@@ -58,7 +92,7 @@ class ProductController {
   }
 
   async store(req, res) {
-    const { name, salePrice, amount, expirationDate } = req.body;
+    const { name, salePrice, amount, expirationDate, barcode } = req.body;
 
     if (!name || !salePrice || !amount) {
       let products = await Product.find();
@@ -78,6 +112,7 @@ class ProductController {
         name,
         salePrice,
         amount,
+        barcode,
         products: products,
         expirationDate: moment(expirationDate).format("YYYY-MM-DD"),
         message: "Preencha os campos obrigatórios (*) para continuar!",

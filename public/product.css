@@ -32,6 +32,10 @@ form.search {
     margin-bottom: 30px;
 }
 
+.btn-secondary {
+    margin-left: 10px;
+}
+
 div.action {
     display: flex;
     font-size: 20px;

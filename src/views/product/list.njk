@@ -12,6 +12,10 @@
             <div class="row">
                 <p class="message-error">{{message}}</p>
                 <div class="col-md-3">
+                    <label class="form-label">Código do produto</label>
+                    <input class="form-control" type="text" name="barcode" placeholder="Código do produto" value="{{barcode}}"/>
+                </div>
+                <div class="col-md-3">
                     <label class="form-label">Nome do produto *</label>
                     <input class="form-control" type="text" name="name" placeholder="Nome do produto" value="{{name}}"/>
                 </div>
@@ -37,12 +41,17 @@
         <h4>Listagem de Produtos</h4>
 
         <form class="search" action="/productslist" method="post">
+            <input class="form-control" type="text" placeholder="Código do produto" name="searchBarcode" value="{{searchBarcode}}" autofocus/>
             <input class="form-control" type="text" placeholder="Nome do produto" name="nome" />
             <button class="btn btn-primary" type="submit">Pesquisar</button>
+            {% if filterActive === true %}
+                <a href="/productslist" class="btn btn-secondary">Limpar</a>
+            {% endif %}
         </form>
         
         <table class="table table-striped table-hover">
             <tr>
+                <th>Código do Porduto</th>
                 <th>Nome</th>
                 <th>Preço de Venda</th>
                 <th>Quantidade</th>
@@ -51,6 +60,7 @@
             </tr>
             {% for product in products %}
                 <tr>
+                    <td>{{ product.barcode }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.formattedSalePrice }}</td>
                     <td>{{ product.amount }}</td>
@@ -69,6 +79,7 @@
 
     </div>
 <script>
+    window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'&&e.target.name=='barcode'){e.preventDefault();return false;}}},true);
     function deleteProdutct(e) {
         if(!window.confirm("Deseja realmente deletar o protudo ?")) {
             e.returnValue = false; 
