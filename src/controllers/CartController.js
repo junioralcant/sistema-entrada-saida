@@ -31,6 +31,30 @@ class CartController {
       return res.render("cart/list", { cart, products });
     }
 
+    if (req.body.searchBarcode) {
+      let products = await Product.find({
+        barcode: req.body.searchBarcode,
+      });
+
+      const getProductsPromise = products.map(async (product) => {
+        product.formattedExpirationDate = moment(product.expirationDate).format(
+          "DD-MM-YYYY"
+        );
+
+        product.formattedSalePrice = formatCurrency.brl(product.salePrice);
+
+        return product;
+      });
+
+      products = await Promise.all(getProductsPromise);
+
+      let { cart } = req.session;
+
+      cart = Cart.init(cart);
+
+      return res.render("cart/list", { cart, products });
+    }
+
     let { cart } = req.session;
 
     cart = Cart.init(cart);

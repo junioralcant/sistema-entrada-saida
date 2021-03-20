@@ -9,6 +9,7 @@
         <div class="content">
             <h4>Frente de Caixa</h4>
             <form action="/cart" method="post" class="search">
+                <input class="form-control" type="text" placeholder="Código do produto" name="searchBarcode" value="{{searchBarcode}}" autofocus/>
                 <input class="form-control" type="text" placeholder="Nome do produto" name="nome" />
                 <button type="submit" class="btn btn-primary">Pesquisar</button>
             </form>
@@ -22,7 +23,7 @@
                 {% for product in products %}
                         <tr>
                             <td>{{ product.name }}</td>
-                            <td>{{ product.salePrice }}</td>
+                            <td>{{ product.formattedSalePrice }}</td>
                             <td>
                                 <form action="/cart/add-one/{{product._id}}" method="post">
                                     <button type="submit" class="btn btn-primary">Adicionar</button>
