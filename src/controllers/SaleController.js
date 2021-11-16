@@ -88,7 +88,7 @@ class SaleController {
 
   async store(req, res) {
     let { cart } = req.session;
-    const { descount } = req.body;
+    const { descount, dateSale } = req.body;
 
     if (cart.items <= 0) return res.redirect("/cart");
 
@@ -115,7 +115,7 @@ class SaleController {
       await product.save();
     });
 
-    await Entrance.create({
+    const entrance = await Entrance.create({
       sale: sale._id,
       value: cart.total.price - descount,
     });
@@ -124,6 +124,18 @@ class SaleController {
       cart = Cart.init(cart).delete(item.product._id);
       req.session.cart = cart;
     });
+
+    if(dateSale) {
+      sale.createdAt = moment(dateSale).format(
+        "YYYY-MM-DDT23:59:ss.SSSZ"
+      );
+      await sale.save();
+
+      entrance.createdAt = moment(dateSale).format(
+        "YYYY-MM-DDT23:59:ss.SSSZ"
+      );;
+      await entrance.save();
+    }
 
     return res.redirect("/cart");
   }
